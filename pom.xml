@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>software.jsj</groupId>
-	<artifactId>jsj-pet-clinic</artifactId>
+	<artifactId>jj-pet-clinic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jsj-pet-clinic</name>
+	<name>jj-pet-clinic</name>
 	<description>My own version of the Pet Clinic App</description>
 
 	<properties>
