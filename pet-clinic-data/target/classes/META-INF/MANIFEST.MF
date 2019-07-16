@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: pet-clinic-data
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: jsanyang
+Implementation-Vendor-Id: software.jsj
+Build-Jdk: 1.8.0_212
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/jj-pet-clinic/pet-clinic-data
+Created-By: Maven Integration for Eclipse
+
