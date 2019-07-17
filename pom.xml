@@ -11,7 +11,7 @@
 	
 	<groupId>software.jsj</groupId>
 	<artifactId>jj-pet-clinic</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 	
 	<modules>
 		<module>pet-clinic-data</module>
@@ -54,7 +54,7 @@
 	
 	<scm>
 		<developerConnection>scm:git:https://github.com/jsj26364/jj-pet-clinic.git</developerConnection>
-	  <tag>jj-pet-clinic-0.0.2</tag>
+	  <tag>jj-pet-clinic-0.0.1</tag>
   </scm>
 
 </project>

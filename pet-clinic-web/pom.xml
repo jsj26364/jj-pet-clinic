@@ -4,7 +4,7 @@
   <parent>
     <groupId>software.jsj</groupId>
     <artifactId>jj-pet-clinic</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
   </parent>
   
   <artifactId>pet-clinic-web</artifactId>
@@ -15,7 +15,7 @@
 	<dependency>
 		<groupId>software.jsj</groupId>
 		<artifactId>pet-clinic-data</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3-SNAPSHOT</version>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
