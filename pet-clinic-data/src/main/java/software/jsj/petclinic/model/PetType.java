@@ -7,7 +7,7 @@ package software.jsj.petclinic.model;
  * @author jsanyang
  *
  */
-public class PetType {
+public class PetType extends BaseEntity {
 
   private String name;
 
