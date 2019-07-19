@@ -2,9 +2,9 @@ package software.jsj.petclinic.services.map;
 
 import java.util.Set;
 import software.jsj.petclinic.model.Pet;
-import software.jsj.petclinic.services.CrudService;
+import software.jsj.petclinic.services.PetService;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
   public Set<Pet> findAll() {
     return super.findAll();
