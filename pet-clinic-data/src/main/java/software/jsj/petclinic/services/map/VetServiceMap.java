@@ -1,9 +1,11 @@
 package software.jsj.petclinic.services.map;
 
 import java.util.Set;
+import org.springframework.stereotype.Service;
 import software.jsj.petclinic.model.Vet;
 import software.jsj.petclinic.services.VetService;
 
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
   public Set<Vet> findAll() {
