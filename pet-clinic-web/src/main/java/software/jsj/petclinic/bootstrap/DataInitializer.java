@@ -28,7 +28,7 @@ public class DataInitializer implements CommandLineRunner {
     ownerService.save(michael);
     
     Owner fiona = new Owner();
-    fiona.setId(1L);
+    fiona.setId(2L);
     fiona.setFirstName("Fiona");
     fiona.setLastName("Glenanne");
     ownerService.save(fiona);
