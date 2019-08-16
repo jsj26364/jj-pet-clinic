@@ -3,8 +3,10 @@ package software.jsj.petclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import software.jsj.petclinic.model.Owner;
+import software.jsj.petclinic.model.PetType;
 import software.jsj.petclinic.model.Vet;
 import software.jsj.petclinic.services.OwnerService;
+import software.jsj.petclinic.services.PetTypeService;
 import software.jsj.petclinic.services.VetService;
 
 @Component
@@ -12,15 +14,28 @@ public class DataInitializer implements CommandLineRunner {
 
   private final OwnerService ownerService;
   private final VetService vetService;
+  private final PetTypeService petTypeService;
   
-  public DataInitializer(OwnerService ownerService, VetService vetService) {
+  public DataInitializer(OwnerService ownerService, VetService vetService,
+      PetTypeService petTypeService) {
     this.ownerService = ownerService;
     this.vetService = vetService;
+    this.petTypeService = petTypeService;
   }
 
   @Override
   public void run(String... args) throws Exception {
     
+    //Pet types
+    PetType dog = new PetType();
+    dog.setName("Dog");
+    PetType savedDogPetType = petTypeService.save(dog);
+    
+    PetType cat = new PetType();
+    dog.setName("Cat");
+    PetType savedCatPetType = petTypeService.save(cat);
+    
+    //Owners
     Owner michael = new Owner();
     michael.setFirstName("Michael");
     michael.setLastName("Weston");
@@ -33,6 +48,7 @@ public class DataInitializer implements CommandLineRunner {
     
     System.out.println("Loaded Owners ...");
     
+    //Vets
     Vet sam = new Vet();
     sam.setFirstName("Sam");
     sam.setLastName("Axe");
