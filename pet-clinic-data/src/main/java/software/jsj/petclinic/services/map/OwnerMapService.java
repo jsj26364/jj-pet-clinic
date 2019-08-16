@@ -9,12 +9,12 @@ import software.jsj.petclinic.services.PetService;
 import software.jsj.petclinic.services.PetTypeService;
 
 @Service
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
   
   private final PetTypeService petTypeService;
   private final PetService petService;
   
-  public OwnerServiceMap(PetTypeService petTypeServie, PetService petService) {
+  public OwnerMapService(PetTypeService petTypeServie, PetService petService) {
     this.petTypeService = petTypeServie;
     this.petService = petService;
   }

@@ -6,7 +6,7 @@ import software.jsj.petclinic.model.Pet;
 import software.jsj.petclinic.services.PetService;
 
 @Service
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
 
   public Set<Pet> findAll() {
     return super.findAll();
