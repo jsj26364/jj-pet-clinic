@@ -8,10 +8,12 @@ import software.jsj.petclinic.model.Pet;
 import software.jsj.petclinic.model.PetType;
 import software.jsj.petclinic.model.Specialty;
 import software.jsj.petclinic.model.Vet;
+import software.jsj.petclinic.model.Visit;
 import software.jsj.petclinic.services.OwnerService;
 import software.jsj.petclinic.services.PetTypeService;
 import software.jsj.petclinic.services.SpecialtyService;
 import software.jsj.petclinic.services.VetService;
+import software.jsj.petclinic.services.VisitService;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -20,14 +22,16 @@ public class DataInitializer implements CommandLineRunner {
   private final VetService vetService;
   private final PetTypeService petTypeService;
   private final SpecialtyService specialtyService;
+  private final VisitService visitService; 
   
   public DataInitializer(OwnerService ownerService, VetService vetService,
-      PetTypeService petTypeService, SpecialtyService specialtyService) {
-    super();
+      PetTypeService petTypeService, SpecialtyService specialtyService, 
+      VisitService visitService) {
     this.ownerService = ownerService;
     this.vetService = vetService;
     this.petTypeService = petTypeService;
     this.specialtyService = specialtyService;
+    this.visitService = visitService;
   }
 
   @Override
@@ -102,6 +106,13 @@ public class DataInitializer implements CommandLineRunner {
     fiona.getPets().add(fionasCat);
     
     ownerService.save(fiona);
+    
+    //Fiona Cat Visit
+    Visit catVisit = new Visit();
+    catVisit.setPet(fionasCat);
+    catVisit.setDate(LocalDate.now());
+    catVisit.setDescription("Sneezy Kitty");
+    visitService.save(catVisit);
     
     
     System.out.println("Loaded Owners ...");
