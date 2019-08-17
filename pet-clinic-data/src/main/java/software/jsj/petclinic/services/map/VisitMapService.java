@@ -4,6 +4,7 @@
 package software.jsj.petclinic.services.map;
 
 import java.util.Set;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import software.jsj.petclinic.model.Visit;
 import software.jsj.petclinic.services.VisitService;
@@ -13,6 +14,7 @@ import software.jsj.petclinic.services.VisitService;
  *
  */
 @Service
+@Profile({"default", "map"})
 public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
 
   
