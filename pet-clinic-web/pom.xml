@@ -94,6 +94,14 @@
   <build> 
 	<plugins>
 		<plugin>
+        	<artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire-plugin.version}</version>
+            <configuration>
+    			<useSystemClassLoader>false</useSystemClassLoader>
+    			<threadCount>1</threadCount>
+			</configuration>
+        </plugin>
+		<plugin>
         	<groupId>ro.isdc.wro4j</groupId>
         	<artifactId>wro4j-maven-plugin</artifactId>
         	<version>${wro4j.version}</version>
