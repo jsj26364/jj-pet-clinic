@@ -77,14 +77,23 @@
 				</execution>
 			</executions>
 		</plugin>
-		<plugin>
+		<!-- <plugin>
         	<artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
+            	<argLine>-Xms512m -Xmx1024m</argLine>
     			<useSystemClassLoader>false</useSystemClassLoader>
     			<threadCount>1</threadCount>
 			</configuration>
-        </plugin>
+			<dependencies>
+				<dependency>
+					<groupId>org.junit.platform</groupId>
+					<artifactId>junit-platform-surefire-provider</artifactId>
+					<version>${junit-platform.version}</version>
+				</dependency>
+			</dependencies>
+			
+        </plugin> -->
             
 	</plugins>
   </build>
