@@ -96,11 +96,11 @@
 		<plugin>
         	<artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
-            <!-- <configuration>
+            <configuration>
     			<useSystemClassLoader>false</useSystemClassLoader>
     			<threadCount>1</threadCount>
 			</configuration>
-			<dependencies>
+			<!-- <dependencies>
 				<dependency>
 					<groupId>org.junit.platform</groupId>
 					<artifactId>junit-platform-surefire-provider</artifactId>
