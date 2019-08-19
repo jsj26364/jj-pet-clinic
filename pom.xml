@@ -27,7 +27,7 @@
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 		<junit-platform.version>1.3.2</junit-platform.version>
     	<junit-jupiter-api.version>5.3.1</junit-jupiter-api.version> <!-- tests only working for this version -->
-    	<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version> <!-- tests only working for this version -->
+    	<maven-surefire-plugin.version>2.20</maven-surefire-plugin.version> <!-- tests only working for this version -->
 		
 		<!-- Web dependencies -->
     	<webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
