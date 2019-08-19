@@ -93,10 +93,10 @@
 	
   <build> 
 	<plugins>
-		<!-- <plugin>
+		<plugin>
         	<artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
-            <configuration>
+            <!-- <configuration>
     			<useSystemClassLoader>false</useSystemClassLoader>
     			<threadCount>1</threadCount>
 			</configuration>
@@ -106,8 +106,8 @@
 					<artifactId>junit-platform-surefire-provider</artifactId>
 					<version>${junit-platform.version}</version>
 				</dependency>
-			</dependencies>
-        </plugin> -->
+			</dependencies> -->
+        </plugin>
 		<plugin>
         	<groupId>ro.isdc.wro4j</groupId>
         	<artifactId>wro4j-maven-plugin</artifactId>
