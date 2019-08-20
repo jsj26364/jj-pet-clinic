@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.hamcrest.Matchers.*;
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,6 +56,8 @@ class OwnerControllerTest {
   OwnerController controller;
   
   Set<Owner> owners;
+  Owner owner1;
+  Owner owner2;
   
   MockMvc mockMvc;
   
@@ -65,7 +69,7 @@ class OwnerControllerTest {
         .standaloneSetup(controller)
         .build();
     
-    Owner owner1 = Owner.builder()
+    owner1 = Owner.builder()
         .id(ID1)
         .firstName(FIRST_NAME1)
         .lastName(LAST_NAME1)
@@ -74,7 +78,7 @@ class OwnerControllerTest {
         .city(CITY1)
         .build();
     
-    Owner owner2 = Owner.builder()
+    owner2 = Owner.builder()
         .id(ID1)
         .firstName(FIRST_NAME2)
         .lastName(LAST_NAME2)
@@ -92,8 +96,11 @@ class OwnerControllerTest {
   @Test
   void shouldReturnOwnersGivenRootUrl() throws Exception {
     
+    //Given
     when(mockOwnerService.findAll()).thenReturn(owners);
     
+    
+    //When/Then
     mockMvc.perform(get("/owners"))
     .andExpect(status().isOk())
     .andExpect(view().name("owners/index"))
@@ -107,8 +114,10 @@ class OwnerControllerTest {
   @Test
   void shouldReturnOwnersGivenIndexUrl() throws Exception {
     
+    //Given
     when(mockOwnerService.findAll()).thenReturn(owners);
     
+    //When/Then
     mockMvc.perform(get("/owners/index"))
     .andExpect(status().isOk())
     .andExpect(view().name("owners/index"))
@@ -143,6 +152,18 @@ class OwnerControllerTest {
     
     //verify zero interactions with the owner service mock
     verifyZeroInteractions(mockOwnerService);
+  }
+  
+  @Test
+  void showOwner() throws Exception {
+    
+    when(mockOwnerService.findById(anyLong())).thenReturn(owner1);
+    mockMvc.perform(get("/owners/1"))
+    .andExpect(status().isOk())
+    .andExpect(view().name("/owners/ownerDetails"))
+    .andExpect(model().attribute("owner", hasProperty("id", is(1L))))
+    .andReturn();
+    
   }
 
 }
