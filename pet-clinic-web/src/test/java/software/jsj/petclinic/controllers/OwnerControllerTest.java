@@ -8,9 +8,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.hamcrest.Matchers.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -94,60 +98,44 @@ class OwnerControllerTest {
   }
 
   @Test
-  void shouldReturnOwnersGivenRootUrl() throws Exception {
+  void findOwners() throws Exception {
     
-    //Given
-    when(mockOwnerService.findAll()).thenReturn(owners);
-    
-    
-    //When/Then
-    mockMvc.perform(get("/owners"))
-    .andExpect(status().isOk())
-    .andExpect(view().name("owners/index"))
-    .andExpect(model().attributeExists("owners"))
-    .andExpect(model().attribute("owners", hasSize(2)))
-    
-    .andReturn();
-    
-  }
-  
-  @Test
-  void shouldReturnOwnersGivenIndexUrl() throws Exception {
-    
-    //Given
-    when(mockOwnerService.findAll()).thenReturn(owners);
-    
-    //When/Then
-    mockMvc.perform(get("/owners/index"))
-    .andExpect(status().isOk())
-    .andExpect(view().name("owners/index"))
-    .andExpect(model().attributeExists("owners"))
-    .andExpect(model().attribute("owners", hasSize(2)))
-    
-    .andReturn();
-    
-  }
-  
-  @Test
-  void shouldReturnOwnersGivenIndexHtmlUrl() throws Exception {
-    
-    when(mockOwnerService.findAll()).thenReturn(owners);
-    
-    mockMvc.perform(get("/owners/index.html"))
-    .andExpect(status().isOk())
-    .andExpect(view().name("owners/index"))
-    .andExpect(model().attributeExists("owners"))
-    .andExpect(model().attribute("owners", hasSize(2)))
-    
-    .andReturn();
-    
-  }
-
-  @Test
-  void shouldReturnNotImplementedView() throws Exception {
     mockMvc.perform(get("/owners/find"))
     .andExpect(status().isOk())
-    .andExpect(view().name("notimplemented"))
+    .andExpect(view().name("owners/findOwners"))
+    .andExpect(model().attributeExists("owner"))
+    .andReturn();
+    
+    //verify zero interactions with the owner service mock
+    verifyZeroInteractions(mockOwnerService);
+  }
+  
+  @Test
+  void processFormReturnMany() throws Exception {
+    List<Owner> ownerList = new ArrayList<>(owners);
+    
+    when(mockOwnerService.findAllByLastNameLike(anyString())).thenReturn(ownerList);
+    
+    mockMvc.perform(get("/owners"))
+    .andExpect(status().isOk())
+    .andExpect(view().name("owners/ownersList"))
+    .andExpect(model().attribute("selections", hasSize(2)))
+    .andReturn();
+    
+    //verify zero interactions with the owner service mock
+    verifyZeroInteractions(mockOwnerService);
+  }
+  
+  @Test
+  void processFormReturnOne() throws Exception {
+    List<Owner> ownerList = new ArrayList<>();
+    ownerList.add(owner1);
+    
+    when(mockOwnerService.findAllByLastNameLike(anyString())).thenReturn(ownerList);
+    
+    mockMvc.perform(get("/owners"))
+    .andExpect(status().is3xxRedirection())
+    .andExpect(view().name("redirect:/owners/1"))
     .andReturn();
     
     //verify zero interactions with the owner service mock
