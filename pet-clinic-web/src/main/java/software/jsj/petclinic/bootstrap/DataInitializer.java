@@ -75,7 +75,7 @@ public class DataInitializer implements CommandLineRunner {
     Owner michael = new Owner();
     michael.setFirstName("Michael");
     michael.setLastName("Weston");
-    michael.setAddress("ichael123 Bickerl St");
+    michael.setAddress("123 Brickerel St");
     michael.setCity("Miami");
     michael.setTelephone("1231231234");
     
@@ -93,7 +93,7 @@ public class DataInitializer implements CommandLineRunner {
     Owner fiona = new Owner();
     fiona.setFirstName("Fiona");
     fiona.setLastName("Glenanne");
-    fiona.setAddress("123 Bickerl St");
+    fiona.setAddress("123 Brickerel St");
     fiona.setCity("Miami");
     fiona.setTelephone("1231231234");
     
