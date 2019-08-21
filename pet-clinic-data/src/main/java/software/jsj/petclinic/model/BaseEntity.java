@@ -21,4 +21,8 @@ public class BaseEntity implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY) //see: Spring Pet Clinic - Create Base Entity
   private Long id;
 
+  public boolean isNew() {
+    return this.id == null;
+  }
+  
 }
